@@ -41,9 +41,6 @@ public class CreateServlet extends HttpServlet {
 
             Message m = new Message();
 
-            String title = request.getParameter("title");
-            m.setTitle(title);
-
             String content = request.getParameter("content");
             m.setContent(content);
 
@@ -73,12 +70,6 @@ public class CreateServlet extends HttpServlet {
                 // indexのページにリダイレクト
                 response.sendRedirect(request.getContextPath() + "/index");
             }
-            em.persist(m);
-            em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "登録が完了しました。");       // ここを追記
-            em.close();
-
-            response.sendRedirect(request.getContextPath() + "/index");
         }
     }
 
